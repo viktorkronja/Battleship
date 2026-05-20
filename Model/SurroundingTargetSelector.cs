@@ -40,7 +40,9 @@ namespace Model
                 if (square != null)
                     return square;
             }
-            throw new InvalidOperationException("No surrounding targets available.");
+            var fallback = _grid.Squares.FirstOrDefault(s => s.State == SquareState.None);
+            if (fallback != null) return fallback;
+            throw new InvalidOperationException("No targets available.");
         }
     }
 }
