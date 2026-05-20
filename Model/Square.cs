@@ -5,10 +5,16 @@ namespace Model
     public class Square
     {
         public Coordinate Position { get; }
+        public SquareState State { get; private set; } = SquareState.None;
 
         public Square(int row, int column)
         {
             Position = new Coordinate(row, column);
+        }
+
+        public void ChangeState(SquareState state)
+        {
+            State = state;
         }
     }
 }

@@ -8,14 +8,14 @@ namespace ModelTests
         [TestMethod]
         public void Constructor_CreatesAllSquares()
         {
-            var grid = new Grid(10, 10);
+            var grid = new FleetGrid(10, 10);
             Assert.AreEqual(100, grid.Squares.Count());
         }
 
         [TestMethod]
         public void Constructor_SquaresHaveCorrectPositions()
         {
-            var grid = new Grid(3, 4);
+            var grid = new FleetGrid(3, 4);
             var squares = grid.Squares.ToList();
 
             Assert.AreEqual(12, squares.Count);
@@ -26,7 +26,7 @@ namespace ModelTests
         [TestMethod]
         public void GetAvailablePlacements_HorizontalOnSingleRow()
         {
-            var grid = new Grid(1, 4);
+            var grid = new FleetGrid(1, 4);
             var placements = grid.GetAvailablePlacements(3).ToList();
 
             Assert.AreEqual(2, placements.Count);
@@ -35,7 +35,7 @@ namespace ModelTests
         [TestMethod]
         public void GetAvailablePlacements_VerticalOnSingleColumn()
         {
-            var grid = new Grid(5, 1);
+            var grid = new FleetGrid(5, 1);
             var placements = grid.GetAvailablePlacements(3).ToList();
 
             Assert.AreEqual(3, placements.Count);
@@ -44,7 +44,7 @@ namespace ModelTests
         [TestMethod]
         public void GetAvailablePlacements_FullGrid()
         {
-            var grid = new Grid(10, 10);
+            var grid = new FleetGrid(10, 10);
             var placements = grid.GetAvailablePlacements(5).ToList();
 
             Assert.AreEqual(120, placements.Count);

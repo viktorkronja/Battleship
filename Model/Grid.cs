@@ -1,6 +1,6 @@
 namespace Model
 {
-    public class Grid
+    public abstract class Grid
     {
         public int Rows { get; }
         public int Columns { get; }
@@ -33,10 +33,7 @@ namespace Model
                 .Concat(GetVerticalPlacements(length));
         }
 
-        protected virtual bool IsSquareAvailable(int row, int column)
-        {
-            return _squares[row, column] != null;
-        }
+        protected abstract bool IsSquareAvailable(int row, int column);
 
         private IEnumerable<IEnumerable<Square>> GetHorizontalPlacements(int length)
         {
