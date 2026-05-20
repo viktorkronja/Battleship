@@ -4,6 +4,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="BattleshipGUI/BattleshipGUI.csproj" />
   <Project Path="Model/Model.csproj" />
   <Project Path="ModelTests/ModelTests.csproj" />
 </Solution>
