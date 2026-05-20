@@ -4,6 +4,22 @@ namespace Model
     {
         private readonly List<Ship> _ships = new();
 
-        public IReadOnlyList<Ship> Ships => _ships;
+        public IEnumerable<Ship> Ships => _ships;
+
+        public void CreateShip(IEnumerable<Square> squares)
+        {
+            _ships.Add(new Ship(squares));
+        }
+
+        public HitResult Hit(int row, int column)
+        {
+            foreach (var ship in _ships)
+            {
+                var result = ship.Hit(row, column);
+                if (result != HitResult.Missed)
+                    return result;
+            }
+            return HitResult.Missed;
+        }
     }
 }

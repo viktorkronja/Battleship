@@ -44,25 +44,20 @@ namespace Model
 
             for (int r = 0; r < Rows; r++)
             {
-                int count = 0;
+                var queue = new LimitedQueue<Square>(length);
                 for (int c = 0; c < Columns; c++)
                 {
                     if (IsSquareAvailable(r, c))
                     {
-                        count++;
-                        if (count >= length)
+                        queue.Enqueue(_squares[r, c]!);
+                        if (queue.Count == length)
                         {
-                            var placement = new Square[length];
-                            for (int i = 0; i < length; i++)
-                            {
-                                placement[i] = _squares[r, c - length + 1 + i]!;
-                            }
-                            result.Add(placement);
+                            result.Add(queue.ToArray());
                         }
                     }
                     else
                     {
-                        count = 0;
+                        queue.Clear();
                     }
                 }
             }
@@ -76,25 +71,20 @@ namespace Model
 
             for (int c = 0; c < Columns; c++)
             {
-                int count = 0;
+                var queue = new LimitedQueue<Square>(length);
                 for (int r = 0; r < Rows; r++)
                 {
                     if (IsSquareAvailable(r, c))
                     {
-                        count++;
-                        if (count >= length)
+                        queue.Enqueue(_squares[r, c]!);
+                        if (queue.Count == length)
                         {
-                            var placement = new Square[length];
-                            for (int i = 0; i < length; i++)
-                            {
-                                placement[i] = _squares[r - length + 1 + i, c]!;
-                            }
-                            result.Add(placement);
+                            result.Add(queue.ToArray());
                         }
                     }
                     else
                     {
-                        count = 0;
+                        queue.Clear();
                     }
                 }
             }
