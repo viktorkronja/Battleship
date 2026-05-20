@@ -15,5 +15,6 @@ public partial class MenuScreen : UserControl
 
     private void NewGame_Click(object sender, RoutedEventArgs e)
     {
+        _main.ShowScreen(new PlacementScreen(_main));
     }
 }
