@@ -108,7 +108,17 @@ public partial class PlacementScreen : UserControl
             int r = horizontal ? row : row + i;
             int c = horizontal ? col + i : col;
             if (r < 0 || r >= 10 || c < 0 || c >= 10) return false;
-            if (_occupied[r, c]) return false;
+
+            for (int dr = -1; dr <= 1; dr++)
+            {
+                for (int dc = -1; dc <= 1; dc++)
+                {
+                    int nr = r + dr;
+                    int nc = c + dc;
+                    if (nr >= 0 && nr < 10 && nc >= 0 && nc < 10 && _occupied[nr, nc])
+                        return false;
+                }
+            }
         }
         return true;
     }
